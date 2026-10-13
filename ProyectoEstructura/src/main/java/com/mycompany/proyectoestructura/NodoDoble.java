@@ -1,36 +1,48 @@
 package com.mycompany.proyectoestructura;
 
 public class NodoDoble {
- private Cancion dato;
- private NodoDoble nodoSig;
- private NodoDoble anterior;
+ private Cancion cancion;
+    private NodoDoble siguiente;
+    private NodoDoble anterior;
 
- public NodoDoble(Cancion dato) {
-  this.dato = dato;
- }
+    public NodoDoble(Cancion dato) {
+    this.cancion = dato;
+    }
  
- public Cancion getDato() {
-        return dato;
+    public Cancion verCancion() {
+        return cancion;
     }
 
-    public void setDato(Cancion dato) {
-        this.dato = dato;
+    public void conectarSiguiente(NodoDoble nodoSig) {
+        this.siguiente = nodoSig;
+    }
+    
+    public void desconectarSiguente (){
+     this.siguiente = null;
     }
 
-    public NodoDoble getNodoSig() {
-        return nodoSig;
-    }
-
-    public void setNodoSig(NodoDoble nodoSig) {
-        this.nodoSig = nodoSig;
-    }
-
-    public NodoDoble getAnterior() {
-        return anterior;
-    }
-
-    public void setAnterior(NodoDoble anterior) {
+    public void conectarAnterior(NodoDoble anterior) {
         this.anterior = anterior;
     }
- 
+    
+    public void desconectarAnterior (){
+     this.siguiente = null;
+    }
+    
+    public NodoDoble verAnterior(){
+     return anterior;
+    }
+    
+    public NodoDoble verSiguiente (){
+     return siguiente;
+    }
+    
+    public void asignarCancion (Cancion cancion){
+     this.cancion = cancion;
+    }
+    
+    @Override
+    public String toString(){
+    return "Informacion: \n" + cancion.toString();
+ }
 }
