@@ -1,6 +1,9 @@
+package com.mycompany.proyectoestructura;
+
 import java.util.Scanner;
 
 public class Menu {
+
     public void ejecutar() {
         int opcion;
         Scanner scanner = new Scanner(System.in);
