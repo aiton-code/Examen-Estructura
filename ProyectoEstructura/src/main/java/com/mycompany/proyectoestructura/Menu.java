@@ -144,6 +144,7 @@ private void mostrarEstadoTrasEliminar() {
         System.out.println("La lista quedó vacía.");
     } else {
         System.out.println("Canción actual: " + lista.getActual());
+        System.out.println("Estado de la lista" + lista.consultarLista());
     }
 }
 
