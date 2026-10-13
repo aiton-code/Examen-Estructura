@@ -70,12 +70,12 @@ public NodoDoble buscarNodoPorId(int id) {
  return null;
 }
 
-public void reproducirCancionID(int id) {
+public NodoDoble reproducirCancionID(int id) {
  NodoDoble nodoEncontrado = this.buscarNodoPorId(id);
  if (nodoEncontrado != null) {
   actual = nodoEncontrado;
-  System.out.println("Reproduciendo ahora: " + actual.verCancion());
- } else System.out.println("No se encontro la cancion con ID: " + id);
+  return actual;
+ } else return null;
 }
  
  public boolean eliminarPorID(int id) {
@@ -141,7 +141,6 @@ public void reproducirCancionID(int id) {
    
    tamano--;
    this.avanzarCancion();
-   this.consultarLista(true);
  }
  
  public void avanzarCancion(){
