@@ -37,8 +37,8 @@ public class ListaReproduccion {
   {
    apoyo.conectarSiguiente(inicio);
    apoyo.conectarAnterior(fin);
-   fin.desconectarSiguente();
-   fin.conectarSiguiente(apoyo);
+   inicio.conectarAnterior(apoyo); 
+   fin.conectarSiguiente(apoyo); 
    inicio = apoyo;
   }
  }
@@ -50,59 +50,98 @@ public class ListaReproduccion {
    id++;
    apoyo.verCancion().asignarId(id);
    apoyo.conectarAnterior(fin);
-   fin.desconectarSiguente();
    fin.conectarSiguiente(apoyo);
-   inicio.desconectarAnterior();
    inicio.conectarAnterior(apoyo);
+   apoyo.conectarSiguiente(inicio);
    fin = apoyo;
   }else System.out.println("Usar Agregar Inicio");
  }
  
- public Cancion buscarPorId(int id){
-   NodoDoble buscador = inicio;
-    for (int x = 0; x < tamano; x++)
-     if (id != buscador.verCancion().consultarId()) buscador = buscador.verSiguiente();
-     else return buscador.verCancion();
-   return null;
+public NodoDoble buscarNodoPorId(int id) {
+ if (inicio == null) {
+  return null;
  }
  
- public void reproducirCancionID(int id){
-  Cancion cancionID = this.buscarPorId(id);
-  if(cancionID != null) actual.asignarCancion(cancionID);
-  else System.out.println("No se encontro la cancion");
+ NodoDoble buscador = inicio;
+ for (int x = 0; x < tamano; x++) {
+  if (buscador.verCancion().consultarId() == id) return buscador;
+  buscador = buscador.verSiguiente();
  }
+ return null;
+}
+
+public void reproducirCancionID(int id) {
+ NodoDoble nodoEncontrado = this.buscarNodoPorId(id);
+ if (nodoEncontrado != null) {
+  actual = nodoEncontrado;
+  System.out.println("Reproduciendo ahora: " + actual.verCancion());
+ } else System.out.println("No se encontro la cancion con ID: " + id);
+}
  
- public boolean eliminarPorID (int id){
+ public boolean eliminarPorID(int id) {
+  if (inicio == null) {
+   return false;
+  }
+
   NodoDoble buscador = inicio;
-  NodoDoble apoyo;
-  for (int x = 0; x < tamano; x++)
-   if (id == buscador.verCancion().consultarId()) {
-    apoyo = buscador.verAnterior();
-    buscador.desconectarAnterior();
-    apoyo.desconectarSiguente();
-    apoyo.conectarSiguiente(buscador.verSiguiente());
-    buscador.verSiguiente().desconectarAnterior();
-    buscador.verSiguiente().conectarAnterior(apoyo);
-    buscador.desconectarSiguente();
-    return true;
+  for (int x = 0; x < tamano; x++) {
+   if (buscador.verCancion().consultarId() == id) {
+    if (tamano == 1) {
+     inicio = null;
+     fin = null;
+     actual = null;
+     tamano = 0;
+     return true;
+    }
+    
+   NodoDoble anterior = buscador.verAnterior();
+   NodoDoble siguiente = buscador.verSiguiente();
+   anterior.conectarSiguiente(siguiente);
+   siguiente.conectarAnterior(anterior);
+   
+   if (buscador == inicio) inicio = siguiente;
+   if (buscador == fin) fin = anterior;
+   if (buscador == actual) actual = siguiente;
+   tamano--;
+   return true;
    }
-   else buscador = buscador.verSiguiente();
-  return false;
- }
+   buscador = buscador.verSiguiente();
+  }
+
+    return false;
+}
  
  public void eliminarActual (){
-  if(actual != null){
-   NodoDoble apoyo;
-   apoyo = actual.verAnterior();
-   actual.desconectarAnterior();
-   apoyo.desconectarSiguente();
-   apoyo.conectarSiguiente(actual.verSiguiente());
-   actual.verSiguiente().desconectarAnterior();
-   actual.verSiguiente().conectarAnterior(apoyo);
+  if (actual == null) {
+   System.out.println("No hay canciones");
+   return;
+  }
+  
+  if (tamano == 1 || (inicio == fin && actual == inicio)) {
+   inicio = null;
+   fin = null;
+   actual = null;
+   tamano = 0;
+   System.out.println("La lista se ha quedado sin canciones.");
+   return;
+  }
+  
+   NodoDoble anteriorNode = actual.verAnterior();
+   NodoDoble siguienteNode = actual.verSiguiente();
+
+   anteriorNode.conectarSiguiente(siguienteNode);
+   siguienteNode.conectarAnterior(anteriorNode);
+
+   if (actual == inicio) {
+    inicio = siguienteNode;
+   }
+   if (actual == fin) {
+    fin = anteriorNode;
+   }
+   
+   tamano--;
    this.avanzarCancion();
-   actual.desconectarSiguente();
    this.consultarLista(true);
-  }else System.out.println("No hay canciones");
  }
  
  public void avanzarCancion(){
@@ -133,8 +172,30 @@ public class ListaReproduccion {
   }
  }
  
+ public int cantidadCanciones (){
+  return tamano;
+ }
+ 
  @Override
  public String toString(){
   return actual.toString();
  }
+
+    public NodoDoble getActual() {
+        return actual;
+    }
+
+    public void setActual(NodoDoble actual) {
+        this.actual = actual;
+    }
+
+    public int getTamano() {
+        return tamano;
+    }
+
+    public void setTamano(int tamano) {
+        this.tamano = tamano;
+    }
+ 
+ 
 }

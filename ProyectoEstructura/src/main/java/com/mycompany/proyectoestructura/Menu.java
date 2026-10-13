@@ -3,7 +3,7 @@ package com.mycompany.proyectoestructura;
 import java.util.Scanner;
 
 public class Menu {
-
+/*
     public void ejecutar() {
         int opcion;
         Scanner scanner = new Scanner(System.in);
@@ -189,5 +189,5 @@ private int leerEnteroPositivo(String mensaje) {
     while ((n = leerEntero(mensaje)) <= 0) {
         System.out.println("Error❌. El valor debe ser mayor que cero.");
     }
-    return n;
+    return n;*/
 }

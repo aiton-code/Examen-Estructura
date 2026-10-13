@@ -2,7 +2,7 @@ package com.mycompany.proyectoestructura;
 
 public class ProyectoEstructura {
     public static void main(String[] args) {
-    Cancion A = new Cancion("lost", "penasio", 100);
+     Cancion A = new Cancion("lost", "penasio", 100);
      Cancion B = new Cancion("papa", "penasio", 100);
      Cancion C = new Cancion("mama", "penasio", 100);
      Cancion D = new Cancion("tio", "penasio", 100);
@@ -14,9 +14,16 @@ public class ProyectoEstructura {
      lista1.agregarInicio(B);
      lista1.agregarInicio(C);
      lista1.agregarInicio(D);
-     lista1.agregarInicio(E);
+     lista1.agregarFinal(E);
      
-     lista1.consultarLista(false);
+     lista1.consultarLista(true);
+     System.out.println("========================");
+     
+     lista1.eliminarPorID(3);
+     
+     System.out.println("========================");
+     lista1.consultarLista(true);
+     
     
     }
 }
