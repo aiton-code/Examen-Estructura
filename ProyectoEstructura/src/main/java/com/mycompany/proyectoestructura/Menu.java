@@ -32,20 +32,20 @@ public class Menu {
 
     private void MostrarMenu() {
         System.out.println("===============Bienvenido a la lista de reproducción de canciones===============");
-        sout("1. Agregar canción al principio de la lista");
-        sout("2. Agregar canción al final de la lista");
-        sout("3. Buscar cancion por ID ");
-        sout("4. Seleccionar la cancion actual por ID");
-        sout("5. Eliminar cancion por ID");
-        sout("6. Eliminar la canción actual");
-        sout("7. Consultar la canción actual");
-        sout("8. Avanzar a la siguiente canción");
-        sout("9. Retroceder a la canción anterior");
-        sout("10. Mostrar la lista de canciones completa");
-        sout("11. Consultar la cantidad de canciones en la lista");
-        sout("12. Simular la reproduccion de k canciones");
-        sout("13. Salir");
-        sout("================================================================================");
+         System.out.println("1. Agregar canción al principio de la lista");
+         System.out.println("2. Agregar canción al final de la lista");
+         System.out.println("3. Buscar cancion por ID ");
+         System.out.println("4. Seleccionar la cancion actual por ID");
+         System.out.println("5. Eliminar cancion por ID");
+         System.out.println("6. Eliminar la canción actual");
+         System.out.println("7. Consultar la canción actual");
+         System.out.println("8. Avanzar a la siguiente canción");
+         System.out.println("9. Retroceder a la canción anterior");
+         System.out.println("10. Mostrar la lista de canciones completa");
+         System.out.println("11. Consultar la cantidad de canciones en la lista");
+         System.out.println("12. Simular la reproduccion de k canciones");
+         System.out.println("13. Salir");
+         System.out.println("================================================================================");
     }
     private void agregar(boolean alInicio) {
         String nombre = leerTexto("Ingrese el nombre de la canción: ");
