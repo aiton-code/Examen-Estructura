@@ -22,7 +22,8 @@ public class Cancion {
         this.duracion = duracion;
     }   
     
-    public int getId() { return id; }
+    public int consultarId() { return id; }
+    public void asignarId (int id) { this.id = id;}
     public String getNombre() { return nombre; }
     public String getArtista() { return artista; }
     public int getDuracion() { return duracion; }
