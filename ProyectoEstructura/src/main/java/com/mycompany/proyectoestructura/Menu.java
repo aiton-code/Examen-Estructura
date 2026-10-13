@@ -138,5 +138,55 @@ public class Menu {
         System.out.print(lista.reproducir(k));
         System.out.println("Reproducción finalizada. Siguiente canción a reproducir: " + lista.getActual());
     }
- 
+    //Estado tras eliminar
+private void mostrarEstadoTrasEliminar() {
+    if (lista.vacia()) {
+        System.out.println("La lista quedó vacía.");
+    } else {
+        System.out.println("Canción actual: " + lista.getActual());
+    }
+}
+
+// Devuelve true y menciona cuando la lista esta vacia
+private boolean avisarSiVacia() {
+    if (lista.vacia()) {
+        System.out.println("Error❌. La lista está vacía. Agregue canciones primero.");
+        return true;
+    }
+    return false;
+}
+
+private String leerLinea(String mensaje) {
+    System.out.print(mensaje);
+    if (!scanner.hasNextLine()) {
+        System.out.println("\nEntrada finalizada. Saliendo.");
+        System.exit(0);
+    }
+    return scanner.nextLine().trim();
+}
+
+private String leerTexto(String mensaje) {
+    String t;
+    while ((t = leerLinea(mensaje)).isEmpty()) {
+        System.out.println("Error❌. El texto no puede estar vacío.");
+    }
+    return t;
+}
+
+private int leerEntero(String mensaje) {
+    while (true) {
+        try {
+            return Integer.parseInt(leerLinea(mensaje));
+        } catch (NumberFormatException e) {
+            System.out.println("Error❌. Entrada inválida. Escriba un número entero.");
+        }
+    }
+}
+
+private int leerEnteroPositivo(String mensaje) {
+    int n;
+    while ((n = leerEntero(mensaje)) <= 0) {
+        System.out.println("Error❌. El valor debe ser mayor que cero.");
+    }
+    return n;
 }
