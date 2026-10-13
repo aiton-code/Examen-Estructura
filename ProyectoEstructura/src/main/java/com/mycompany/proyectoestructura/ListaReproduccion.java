@@ -176,6 +176,7 @@ public void reproducirCancionID(int id) {
   return tamano;
  }
  
+ 
  @Override
  public String toString(){
   return actual.toString();
