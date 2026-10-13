@@ -1,6 +1,9 @@
 # Examen-Estructura
 ----INSTRUCCIONES EN COMPILACIÓN Y EJECUCIÓN EN EL PROGRAMA (CON MAVEN)----
 
+-Requesitos previos:
+     Tener en tu equipo Java Develpment Kit (JDK) 21 o superior instalado en tu equipo.
+     Tener Apache Maven einstlado y configurado en las variables de entorno 
 Este proyecto está organizado en el paquete `com.mycompany.proyectoestructura`. 
 Para poder compilarlo y ejecutarlo de forma correcta desde la terminal o comandos, se deben seguir los siguientes pasos:
 1. Estructura de carpetas requerida:
@@ -19,4 +22,9 @@ Para poder compilarlo y ejecutarlo de forma correcta desde la terminal o comando
         mvn exec:java
              (Opcional: Si se desea ejecutar el menú interactivo en lugar de la prueba principal por defecto, debera crear una clase de prueba o invocar `Menu` desde `ProyectoEstructura`).
 
-----CODIGO FUENTE DE LAS CLASES----
+----FUNCIÓN Y EJECUCIÓN DEL PROGRAMA----
+
+El presente programa es una simulación de una Lista de Reproducción de Música, basada en una estructura de datos de lista doblemente ligada circular.
+Lo que nos permite gestionar canciones mediante un menú interactivo en consola.
+
+-Funciones principales del menú (Operaciones del 1 al 13):
