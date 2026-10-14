@@ -1,10 +1,10 @@
 # Examen-Estructura
 ----INTEGRANTES DEL EQUIPO QUE REALIZO EL PROGRAMA----
--Rodríguez Mejía Luis Angel (Grupo 1359) \n
--Garcia Rosales Ailton Jesus (Grupo 1358) \n
--Bartolini Betancourt Jonathan Absalon (Grupo 1358) \n
--Gonzalez Morales Leonardo (Grupo 1358) \n
--Martínez Pérez Julio Cesar (Grupo 1358) \n
+- Rodríguez Mejía Luis Angel (Grupo 1359)-
+- Garcia Rosales Ailton Jesus (Grupo 1358)-
+- Bartolini Betancourt Jonathan Absalon (Grupo 1358)-
+- Gonzalez Morales Leonardo (Grupo 1358)-
+- Martínez Pérez Julio Cesar (Grupo 1358)-
 
 ----INSTRUCCIONES EN COMPILACIÓN Y EJECUCIÓN EN EL PROGRAMA (CON MAVEN)----
 
