@@ -113,8 +113,8 @@ public class Menu {
    System.out.print("Colocar el ID de la cancion a reproducir \n");
    int opcion = new Scanner(System.in).nextInt();      
    NodoDoble eleccion = lista.reproducirCancionID(opcion);
-   if (eleccion != null) System.out.println("Reproduciendo ahora: " + eleccion.verCancion());
-   else System.out.println("No se encontro la cancion con ID: " + opcion);
+   if (eleccion != null) System.out.println("Reproduciendo ahora: " + eleccion.verCancion() + "\n");
+   else System.out.println("No se encontro la cancion con ID: " + opcion + "\n");
    this.ejecutar();
   }
 
@@ -174,7 +174,7 @@ public class Menu {
 
   private void simularReproduccion() {
     if (lista.cantidadCanciones() == 0) {
-        System.out.println("No hay canciones en la lista para simular reproducción.");
+        System.out.println("No hay canciones en la lista para simular reproduccion.");
         this.ejecutar();
         return;
     }
@@ -183,7 +183,7 @@ public class Menu {
     Scanner scanner = new Scanner(System.in);
 
     if (!scanner.hasNextInt()) {
-        System.out.println("Error: Debe ingresar un número entero válido.");
+        System.out.println("Error: Debe ingresar un numero entero valido.");
         scanner.next();
         this.ejecutar();
         return;
