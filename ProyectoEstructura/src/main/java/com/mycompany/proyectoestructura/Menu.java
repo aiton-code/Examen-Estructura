@@ -78,6 +78,11 @@ public class Menu {
    System.out.print("Seleciona la cancion que quieres agregar al inicio de la lista \n");
    for (int x = 0; x < impresiones.length; x++) System.out.print(x + " - " + impresiones[x] + "\n");
    int opcion = new Scanner(System.in).nextInt();
+   if(opcion < 0 || opcion >= impresiones.length) {
+    System.out.println("Error: Numero invalido. Debe ser un numero entre 0 y " + (impresiones.length - 1));
+    this.agregarInicio(impresiones);
+    return;
+   }
    lista.agregarInicio(impresiones[opcion]);
    this.ejecutar();
   }
@@ -86,6 +91,11 @@ public class Menu {
    System.out.print("Seleciona la cancion que quieres agregar al final de la lista \n");
    for (int x = 0; x < impresiones.length; x++) System.out.print(impresiones[x] + "\n");
    int opcion = new Scanner(System.in).nextInt();
+   if(opcion < 0 || opcion >= impresiones.length) {
+    System.out.println("Error: Numero invalido. Debe ser un numero entre 0 y " + (impresiones.length - 1));
+    this.agregarInicio(impresiones);
+    return;
+   }
    lista.agregarFinal(impresiones[opcion]);
    this.ejecutar();
   }
@@ -138,10 +148,23 @@ public class Menu {
   }
 
   private void mostrarLista() {
-   System.out.print("Colocar true para ver orden , Colocar false para ver en orden inverso \n");
-   boolean opcion = new Scanner(System.in).nextBoolean();
-   lista.consultarLista(opcion);
-   this.ejecutar();
+   Scanner scanner = new Scanner(System.in);
+   boolean opcionValida = false;
+   boolean opcion = true;
+    
+   while (!opcionValida) {
+    System.out.print("Colocar true para ver orden, Colocar false para ver en orden inverso: \n");
+    if (scanner.hasNextBoolean()) {
+     opcion = scanner.nextBoolean();
+     opcionValida = true; 
+    } else {
+     System.out.println("Error: Debes escribir exactamente 'true' o 'false'. Intentalo de nuevo.\n");
+     scanner.next();
+    }
+   }
+    
+    lista.consultarLista(opcion);
+    this.ejecutar();
   }
 
   private void consultarCantidad() {
@@ -150,6 +173,46 @@ public class Menu {
   }
 
   private void simularReproduccion() {
-  }
+    if (lista.cantidadCanciones() == 0) {
+        System.out.println("No hay canciones en la lista para simular reproducción.");
+        this.ejecutar();
+        return;
+    }
+
+    System.out.print("Ingrese la cantidad de canciones que desea reproducir de seguido: ");
+    Scanner scanner = new Scanner(System.in);
+
+    if (!scanner.hasNextInt()) {
+        System.out.println("Error: Debe ingresar un número entero válido.");
+        scanner.next();
+        this.ejecutar();
+        return;
+    }
+
+    int k = scanner.nextInt();
+    if (k <= 0) {
+        System.out.println("Error: La cantidad debe ser mayor a 0.");
+        this.ejecutar();
+        return;
+    }
+
+    System.out.println("\n Iniciando simulacion de reproduccion (" + k + " canciones)...\n");
+
+    for (int i = 0; i < k; i++) {
+        System.out.println("Reproduciendo [" + (i + 1) + "/" + k + "]: " + lista.getActual().verCancion());
+
+        try {
+            Thread.sleep(1500); 
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            System.out.println("Simulación interrumpida.");
+        }
+
+        lista.avanzarCancion();
+    }
+
+    System.out.println("\n Simulación finalizada.\n");
+    this.ejecutar();
+}
     
 }
