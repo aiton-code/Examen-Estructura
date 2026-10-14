@@ -26,7 +26,7 @@ public class Menu {
    case 10: mostrarLista(); break;
    case 11: consultarCantidad(); break;
    case 12: simularReproduccion(); break;
-   case 13: System.out.println("Gracias por su preferencia. Hasta luego"); break;
+   case 13: System.out.println("Gracias por su preferencia. Hasta luego"); System.exit(0); break;
    default: System.out.println("Error❌. Opción inválida. Por favor, ingrese un número del 1 al 13.");
   }
  }
